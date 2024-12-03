@@ -45,6 +45,22 @@ To assign an existing alias to another cmdlet:
 Set-Alias -Name commands Get-Host  
 Note: If commands alias does not exist, Set-Alias will create the alias and assign it to the cmdlet. We cannot assign an inbuilt alias.  
 
+Creating Variables:  
+$myname="Salman"  
+${My Name is}="Salman"  
+Note: Letter, alphabet, symbols and special characters can be used while crceating a variable but enclose it inside {}.  
+
+To get object type of a variable:  
+$myname.GetType()  
+
+To see properties and methods available for a variable:  
+$myname | Get-Member  
+
+To assign the output of a cmdlet in a variable:  
+$commands=Get-Command  
+
+How to use a variable value in a string:  
+"Hello, $myname"  
 
 
 
