@@ -26,6 +26,27 @@ Get-Help *
 To see help related to a command:  
 Get-Command Get-Host  
 
+Three types of parameters: Optional, Mandatory and Positional Parameters.  
+
+To see list of all aliases (Built-in or user-defined):  
+Get-Alias  
+
+To see list of all aliases starting with a particular letter(upper or lower):  
+Get-Alias -Name w*  
+
+To see aliases of a particular command:  
+Get-Alias -Definition Get-Command  
+
+To set alias for cmdlets:  
+New-Alias -Name command Get-command  
+Note: We cannot assign same alias to another cmdlet using New-Alias. User-defined alias are not saved after we exit from Powershell.  
+
+To assign an existing alias to another cmdlet:  
+Set-Alias -Name commands Get-Host  
+Note: If commands alias does not exist, Set-Alias will create the alias and assign it to the cmdlet. We cannot assign an inbuilt alias.  
+
+
+
 
 
 
