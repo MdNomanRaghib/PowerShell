@@ -59,7 +59,7 @@ $myname | Get-Member
 To assign the output of a cmdlet in a variable:  
 $commands=Get-Command  
 
-How to use a variable value in a string:  
+To use a variable value in a string:  
 "Hello, $myname"  
 
 
