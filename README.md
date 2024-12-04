@@ -1,5 +1,5 @@
 # PowerShell
-Data and Notes related to PowerShell  
+<b>Data and Notes related to PowerShell</b>   
 
 To know the PowerShell version and details:  
 Get-Host  
@@ -99,6 +99,25 @@ $Name=Read-Host "Please enter name" -AsSecureString
 
 To write a message to console:  
 Write-Host "My name is $name"  
+
+Extension of PowerShell script:.ps1  
+By default, PowerShell execution policy restricts any script to run.By default, execution policy is set to Restricted.  
+Restricted: Prevents any script from being run.  
+AllSigned: Script will run if signed by trusted publisher.  
+RemoteSigned: Script created locally will run but those downloaded from internet will not run unless it is digitally signed by a trusted publisher.  
+Unsigned: All scripts will run.  
+
+To check current execution policy:  
+Get-ExecutionPolicy  
+
+To change the execution policy(user requires administrative privilege):  
+Set-ExecutionPolicy Unrestricted  
+
+Variable scopes in PowerShell:  
+Global scope: Default scope for PowerShell objects. Can be accessed by all objects in current PowerShell session.  
+Script scope: Variable defined inside script can be accessed only from within the scripts.  
+Private scope: Can be accessed within current scope.  
+Numbered scope: Used to refer the variables with the same name in different scopes. Variables are identified by referring it using a name or a number.  
 
 
 
