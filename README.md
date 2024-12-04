@@ -91,6 +91,17 @@ $FALSE - Contains False.
 $TRUE - Contains True.  
 $OFS - Stores a string that we want to use as an output field seperator.  
 
+To read a line of input from console:  
+$Name=Read-Host "Please enter name"  
+
+To save input as secure string(asterisk will be displayed instead of input values):  
+$Name=Read-Host "Please enter name" -AsSecureString  
+
+To write a message to console:  
+Write-Host "My name is $name"  
+
+
+
 
 
 
