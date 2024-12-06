@@ -134,6 +134,8 @@ Get-Service | Where-Object {$_.Name -cLike "N*"} - Same as above but will perfor
 Get-Service | Where-Object {$_.Status -eq "Running" -and $_.Name -like "A*"} - and or or operators can be used also.  
 -lt, -le, -gt, -ge, -eq, -ne, -like, -clike (Operators for filtering)  
 
+Select-Object - Filters specific properties of object based on the parameter specified:  
+Get-Service | Select-Object -Property Name,Status  
 
 
 
