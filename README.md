@@ -119,8 +119,15 @@ Script scope: Variable defined inside script can be accessed only from within th
 Private scope: Can be accessed within current scope.  
 Numbered scope: Used to refer the variables with the same name in different scopes. Variables are identified by referring it using a name or a number.  
 
+Get-Service - Display all the services on a local or remote computer.  
+Table contents of Get-Service output : Status, Service name and Display name.  
+Usage: Get-Service -Name DHCP  
+       Get-Service -Name "*net*"  
+       Get-Service -DisplayName "*net*"  
 
-
+Where-Object: Used to limit or filter the object passed tothe pipeline.  
+Usage: Get-Service | Where-Object {$_.Status -eq "Running"}  
+Note: $_. is the current instance of the object being evaluated.  
 
 
 
