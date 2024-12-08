@@ -4,3 +4,7 @@
 2) To retrieve the details of the first 3 services running in local system and export the contents in a csv(comma separated value) format.  
    Get-Service | Where-Object {$_.Status -eq "Running"} | Select -First 3 | Export-Csv -Path C:\Users\noman\Desktop\Test1.csv  
 
+3) Display the last five sorted output of Get-Service cmdlet on the basis of the "Displayname" field.  
+   Get-Service | Sort-Object -Property DisplayName | Select -Last 5  
+
+4) 
