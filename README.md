@@ -148,7 +148,9 @@ Get-Service >> C:\File.txt (This appends the data)
 Export-Csv (This cmdlet sends output to a file in CSV format)  
 Get-Service | Select-Object -Last 10 | Export-Csv -Path C:\File.csv  
 
-Sort-Object (Used for sorting)  
-Get-Service | Sort-Object -Property DisplayName  
+Get-Process (To retrieve all running processes in local or remote computer)  
+Get-Process -Name powershell (Show details of powershell process only)  
+Get-Process -Id 37567 (See details based on process id)  
+Get-Process -Name win*,pow* (See details of multiple processes using wildcards and commas)  
 
 
