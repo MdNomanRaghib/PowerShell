@@ -148,4 +148,7 @@ Get-Service >> C:\File.txt (This appends the data)
 Export-Csv (This cmdlet sends output to a file in CSV format)  
 Get-Service | Select-Object -Last 10 | Export-Csv -Path C:\File.csv  
 
+Sort-Object (Used for sorting)  
+Get-Service | Sort-Object -Property DisplayName  
+
 
