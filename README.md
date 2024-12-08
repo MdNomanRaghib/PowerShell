@@ -136,14 +136,16 @@ Get-Service | Where-Object {$_.Status -eq "Running" -and $_.Name -like "A*"} - a
 
 Select-Object - Filters specific properties of object based on the parameter specified:  
 Get-Service | Select-Object -Property Name,Status  
+Get-service | Select-Object -ExpandProperty -Name,Status (This removes the table headline of output.)  
+Get-Service| Select-Object -Head 5  
+Get-Service | Select-Object -Last 3  
 
+Out-File (This cmdlet sends output to a file)  
+Get-Service | Out-File -FilePath C:/File.txt  
+Get-Service > C:/File.txt (Shortcut to send output to file)  
+Get-Service >> C:/File.txt (This appends the data)  
 
-
-
-
-
-
-
-
+Export-Csv (This cmdlet sends output to a file in CSV format)  
+Get-Service | Select-Object -Last 10 | Export-Csv -Path C:/File.csv  
 
 
