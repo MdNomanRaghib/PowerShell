@@ -1,0 +1,6 @@
+1) To print stopped services starting with letter 's' (case-sensitive) and send the output to na text file.  
+   Get-Service | Where-Object {$_.Status -eq "Stopped" -and $_.Name -clike "s*"} > C:\Users\noman\Desktop\Test.txt  
+
+2) To retrieve the details of the first 3 services running in local system and export the contents in a csv(comma separated value) format.  
+   Get-Service | Where-Object {$_.Status -eq "Running"} | Select -First 3 | Export-Csv -Path C:\Users\noman\Desktop\Test1.csv  
+
