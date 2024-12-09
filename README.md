@@ -167,7 +167,21 @@ Import-Csv -Path C:\Text.csv
 
 Get-EventLog -list (To view all available event logs)  
 Get-EventLog -LogName Application (To display specific event log)  
-Get-EventLog -LogName Application -EntryType Error (displays the details of those events  having errors in the application event log)  
+Get-EventLog -LogName Application -EntryType Error (displays the details of those events having errors in the application event log)  
+
+Format-Wide (To retrieve single-item data (such as a process name) and display that data in one or more columns)  
+Format-Wide only displays a single property as its -Property parameter only takes a single value.  
+Get-EventLog -LogName Application | Format-Wide -Property Source  
+Get_eventLog -LogName Application | Format-Wide -Property Source -Column 3  
+The –Column parameter can be used to specify the number of columns in which the data has to be displayed.  
+
+Format-List (Displays an object in the form of a listing, with each property labeled and displayed on a separate line)  
+The property parameter of Format-List can accept one or more property names.  
+Get-EventLog -LogName Application | Format-List  
+
+Format-Table (formats the output in a tabular format)  
+The -AutoSize parameter when used with Format-Table cmdlet will calculate column widths based on the actual data to be displayed.  
+Get-EventLog -LogName Application | Select -First 10 | Format-Table -Autosize  
 
 
 
