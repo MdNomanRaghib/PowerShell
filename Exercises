@@ -11,6 +11,11 @@
    Get-Process | Sort-Object -Property CPU -Descending | Select -First 5
    Get-Process | Measure-Object -Property CPU -Maximum | Select Count,Maximum
 
+5) Retrieve the process details(such as ProcessName, ID, VM, CPU) which consumes the maximum amount of virtual memory
+   Get-Process | Sort-Object -Property VM -Descending | Select -First 1 | Select ProcessName,Id,VM,CPU  
+
+
+
 
 
 
