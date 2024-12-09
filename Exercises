@@ -14,6 +14,9 @@
 5) Retrieve the process details(such as ProcessName, ID, VM, CPU) which consumes the maximum amount of virtual memory
    Get-Process | Sort-Object -Property VM -Descending | Select -First 1 | Select ProcessName,Id,VM,CPU  
 
+6) To fetch the source details of the application logs having errors from the csv file into another text file. The source details need to be displayed in 5 columns.
+   Import-Csv -Path "C:\PowerShell\Eventlogs.csv" | Where-Object {$_.Entrytype -eq "Error"} | Select-Object Source | Format-Wide -Column 5 | Out-file -FilePath "C:\PowerShell\Events.txt"
+
 
 
 
