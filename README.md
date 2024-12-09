@@ -161,4 +161,13 @@ Get-Process | Measure-Object (Retrieves total no of processes)
 Get-Process | Measure-Object -Property VM -Sum _average -Maximum -Minimum  
 Get-Process | Measure-Object -Property VM -Line -Word -Character  
 
+Get-Content (This cmdlet retrieves contents of file from a specified location)  
+Get-Content -Path C:\Test.txt  
+Import-Csv -Path C:\Text.csv  
+
+Get-EventLog -list (To view all available event logs)  
+Get-EventLog -LogName Application (To display specific event log)  
+Get-EventLog -LogName Application -EntryType Error (displays the details of those events  having errors in the application event log)  
+
+
 
