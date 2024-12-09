@@ -17,8 +17,10 @@
 6) To fetch the source details of the application logs having errors from the csv file into another text file. The source details need to be displayed in 5 columns.
    Import-Csv -Path "C:\PowerShell\Eventlogs.csv" | Where-Object {$_.Entrytype -eq "Error"} | Select-Object Source | Format-Wide -Column 5 | Out-file -FilePath "C:\PowerShell\Events.txt"
 
+7) Retrieve the first 10 source and instance id details of the system logs having error records and display the result in a tabular format.
+   Get-EventLog -LogName system | Where-Object {$_.EntryType -eq "Error"} | Select -First 10 Source,InstanceId | Format-Table
 
-
+8) 
 
 
 
