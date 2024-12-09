@@ -7,4 +7,11 @@
 3) Display the last five sorted output of Get-Service cmdlet on the basis of the "Displayname" field.  
    Get-Service | Sort-Object -Property DisplayName | Select -Last 5  
 
-4) 
+4) PowerShell script to fetch the details of top 5 processes consuming high CPU time. he script should also retrieve details about the the total number of processes running in the system along with the value of highest CPU time consumed.  
+   Get-Process | Sort-Object -Property CPU -Descending | Select -First 5
+   Get-Process | Measure-Object -Property CPU -Maximum | Select Count,Maximum
+
+
+
+
+
