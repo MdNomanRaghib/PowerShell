@@ -183,5 +183,15 @@ Format-Table (formats the output in a tabular format)
 The -AutoSize parameter when used with Format-Table cmdlet will calculate column widths based on the actual data to be displayed.  
 Get-EventLog -LogName Application | Select -First 10 | Format-Table -Autosize  
 
+Get-ChildItem (to retrieve all the files and folders from any specified directory).  
+By default, the Get-ChildItem retrieves the contents of the current working directory if no specific location is specified.  
+Get-ChildItem -Path C:\PowerShell  
+Get-ChildItem -Path C: -Recurse (-Recurse parameter is used to get objects recursively from the specified directory path)  
+
+New-Item (creates a new file or folder on your computer)  
+New-Item -Path C:\ -Name MyData -Type Directory  
+New-Item -Path C:\ -Name MyData -Type Directory -Value "This is the content" (-Value can be used to add some data to your new file)  
+
+
 
 
