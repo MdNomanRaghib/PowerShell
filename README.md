@@ -153,4 +153,12 @@ Get-Process -Name powershell (Show details of powershell process only)
 Get-Process -Id 37567 (See details based on process id)  
 Get-Process -Name win*,pow* (See details of multiple processes using wildcards and commas)  
 
+Sort-Object - Displays object is sorted order. Ascending by default.  
+Get-Process | Sort-Object -Property CPU -Descending  
+
+Measure-Object - This cmdlet performs calculations on property values of objects.  
+Get-Process | Measure-Object (Retrieves total no of processes)  
+Get-Process | Measure-Object -Property VM -Sum _average -Maximum -Minimum  
+Get-Process | Measure-Object -Property VM -Line -Word -Character  
+
 
