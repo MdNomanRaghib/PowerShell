@@ -20,7 +20,12 @@
 7) Retrieve the first 10 source and instance id details of the system logs having error records and display the result in a tabular format.
    Get-EventLog -LogName system | Where-Object {$_.EntryType -eq "Error"} | Select -First 10 Source,InstanceId | Format-Table
 
-8) 
+8) John wants to retrieve the contents from the C: drive of his system. He then creates a new folder named "MyData" in the C: drive to save some confidential information. After a random check from the CCD, John has been asked to move all personal information to D: drive of his system. 
+   Get-ChildItem -Path C:\
+   New-Item -Path C:\ -Name MyData -Type Directory
+   Move-Item -Path C:\MyData -Destination D:\
+
+9) 
 
 
 
