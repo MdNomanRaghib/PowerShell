@@ -45,6 +45,9 @@ To assign an existing alias to another cmdlet:
 Set-Alias -Name commands Get-Host  
 Note: If commands alias does not exist, Set-Alias will create the alias and assign it to the cmdlet. We cannot assign an inbuilt alias.  
 
+User-created aliases can be removed using the remove-item cmdlet.  
+Remove-Item alias:\gpss  
+
 Creating Variables:  
 $myname="Salman"  
 ${My Name is}="Salman"  
@@ -147,6 +150,15 @@ Get-Service >> C:\File.txt (This appends the data)
 
 Export-Csv (This cmdlet sends output to a file in CSV format)  
 Get-Service | Select-Object -Last 10 | Export-Csv -Path C:\File.csv  
+
+To convert the output to  comma separated values we can use the following command.  
+get-process |select -first 2|ConvertTo-Csv | Out-File -filepath D:\FA1_PowerShell\file4.csv  
+
+To redirect the output to html file we can use the following command:  
+get-process |select -first 2|ConvertTo-Html | Out-File -filepath D:\FA1_PowerShell\file1.html  
+
+To redirect the output to xml file we can use the following command:  
+get-process | Export-Clixml -path D:\FA1_PowerShell\file2.xml  
 
 Get-Process (To retrieve all running processes in local or remote computer)  
 Get-Process -Name powershell (Show details of powershell process only)  
@@ -264,6 +276,65 @@ Type "exit" to come out of remote session.
 Method 2: 
 Execute the below command and when prompted, provide the administrator's credentials  
 Invoke-Command -ComputerName system1 -Credential Administrator -ScriptBlock {Get-Process}
+
+$Error - A global variable which logs all errors during the current PowerShell session.  
+It is a collection of PowerShell Error Objects with the most recent error at index 0.  
+We can store the non-terminating errors in user defined variables also. The -ErrorVariable parameter allows us to do so.  
+Along with the created error variable, $Error variable will also be updated with the error details.  
+Stop-Process -Name fakeprocess -ErrorVariable var ($var and $Error will store the error)  
+
+ErrorAction  
+For a specific cmdlet, the user can specify the action to be taken if a non-terminating error occurs.  
+Continue: The default option.Errors will display and execution will continue.  
+SilentlyContinue: Error messages are suppressed and execution continues.  
+Get-Process -Name Powershell,Ntpad -ErrorAction silentlycontinue  
+Stop: Forces execution to stop, making it like a terminating error.  
+Get-Process -Name Powershell,Ntpad -ErrorAction stop  
+Ignore (new in v3): The error is ignored and not logged to the error variable($Error).  
+Get-Process -Name Powershell,Ntpad -ErrorAction ignore  
+Inquire : Prompts the users for the action.  
+Get-Process -Name Powershell,Ntpad -ErrorAction Inquire  
+$ErrorActionPreference  
+PowerShell has a built in variable which allows the user to specify the action to be taken for a non-terminating error.  
+The default action preference is “Continue”.  
+We can change it for the current session using the following command:  
+$ErrorActionPreference = "Silentlycontinue"  
+
+The Try, Catch and Finally statements allow us to control script flow when we encounter errors.  
+The behavior of try/catch is to catch the terminating errors.  
+Non-terminating errors inside a try block will not trigger the Catch.  
+To trigger the Catch due to non-terminating errors, an error action needs to be specified.  
+Try block  
+Used to enclose a set of statements that might throw an exception.  
+The try block must be followed by a Catch or Finally block.  
+Catch block  
+Used to handle the error thrown by the try block.  
+It must be used after the try block only.  
+You can use multiple catch block with a single try.  
+Finally block  
+Finally block follows try or catch block.  
+It encloses a block of statements that needs to be executed regardless of whether or not an exception occurs within the try block.  
+Try  
+{  
+Write-Host "Attempting dangerous operation"  
+$content = Get-Content -Pathh c:\somefile.txt  
+}  
+Catch  
+{  
+Write-Host "Caught an exception"  
+Write-Host "Exception type: $($_.Exception.gettype().Fullname)"  
+Write-Host "Exception message: $($_.Exception.Message)"  
+}  
+Finally  
+{  
+Write-Host "FInally block reached"  
+}  
+
+PowerShell processes the operators in the following precedence order:  
+–Parentheses(), - negative number, *, /, %, “+ or –”  
+[math]::Round(1.23456,2)  
+
+
 
 
 
