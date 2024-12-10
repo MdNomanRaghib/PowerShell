@@ -216,6 +216,12 @@ Get-Module (Retrieve details about the modules that has been loaded in the curre
 Now, function in the module can be loaded directly.  
 Remove-Module (Removes module from current session)  
 
+Risk Mitigation  
+-WhatIf parameter will show you messages on the potential effect of PowerShell commands instead of executing them.
+Get-Childitem C:\OldFiles\*.txt -Recurse | Remove-Item -WhatIf  
+The -Confirm parameter provides a confirmation prompt to the user prior to executing the PowerShell commands.  
+Get-Childitem C:\OldFiles\*.txt -Recurse | Remove-Item -Confirm  
+
 
 
 
