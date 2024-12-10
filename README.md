@@ -222,6 +222,33 @@ Get-Childitem C:\OldFiles\*.txt -Recurse | Remove-Item -WhatIf
 The -Confirm parameter provides a confirmation prompt to the user prior to executing the PowerShell commands.  
 Get-Childitem C:\OldFiles\*.txt -Recurse | Remove-Item -Confirm  
 
+Background Jobs:  
+Start-Job -Name J1 -ScriptBlock {Get-Process}  
+The Start-Job command returns an object that represents the job. The job object contains useful information about the job, but it does not contain the job results.  
+Get-Job (check out the status of all scheduled jobs)  
+Get-Job -Id 1 (check out the status of a particular scheduled job)  
+Receive-Job -Id 1 (To see what output the background job generated)  
+Once the “HasMoreData” value turns to false, we cannot receive the job again.  
+When Receive-Job returns results, by default, it deletes those results from the cache where job results are stored. If you run another Receive-Job command, you get only the results that are not yet received.  
+To prevent Receive-Job from deleting the job results that it has returned, use the Keep parameter. As a result, Receive-Job returns all of the results that have been generated until that time.  
+Receive-job -id 3 -Keep  
+Wait-Job -ID 3 (Wait-Job lets you wait for a particular job, for all jobs, or for any of the jobs to be completed.)  
+As a result, the PowerShell prompt is suppressed until the job is completed.  
+wait-job -id 3 -timeout 120 (Timeout parameter to limit the wait to 120 seconds)  
+When the time expires, the command prompt returns, but the job continues to run in the background if its not completed.  
+
+$job = Start-Job -ScriptBlock {Get-EventLog -Log System}  
+$job | Stop-Job (The following command stops the job. It uses a pipeline operator (|) to send the job in the $job variable to Stop-Job.)  
+Remove-Job -id 7(To delete a background job)  
+
+Windows Management Instrumentation(WMI) is a collection of objects which keeps information about computer’s hardware and software.  
+The Get-WMIObject cmdlet is used to retrieve information about the various classes in the WMI.  
+Get-WMIObject -List (To get a list of all WMI classes)  
+Get-WMIObject -Class win32_operatingsystem (To get the Operating system details)  
+Get-WMIObject -Class win32_logicaldisk (To get the disk details)  
+
+
+
 
 
 
