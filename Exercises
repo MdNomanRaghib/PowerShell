@@ -28,7 +28,7 @@
 9) PowerShell script to delete all text files present in the location "D:\ExploreFiles"
    Remove-Item -Path D:\ExploreFiles\*.txt -Recurse
 
-10) Powershell script to see last 3 days logs of error type application logs.
+10) Powershell script to retrieve all the log details showing error messages from last 3 days to current date. 
     Function Log
     {
     param([string]$logtype)
