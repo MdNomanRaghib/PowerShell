@@ -36,7 +36,16 @@
     Get-EventLog -LogName $logtype -EntryType Error -After $dte
     }
 
-11) 
+11) Display the details of all the processes starting with letter “C”(case-sensitive) which consumes less than 100 MB physical memory of your system. Display only the process name along with the physical memory
+    Get-Process | Where-Object {$_.ProcessName -clike "C*" -and $_.PM -lt 100MB} | Format-Table -Property PM,ProcessName
+
+12) Display the 10 most recent application event log entries. Include only event id and event message in the output.
+   Get-EventLog -LogName Application | Sort-Object Time -Descending | Select -First 10 InstanceID,Message
+
+13) Identify top 15 processes running in your system consuming maximum physical memory. Select only name, ID, PM and display the output in list format.
+    Get-Process | Sort-Object PM -Descending | Select -First 15 -Property ProcessName,Id,PM | Format-List
+
+14) 
  
 
 
