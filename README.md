@@ -247,6 +247,23 @@ Get-WMIObject -List (To get a list of all WMI classes)
 Get-WMIObject -Class win32_operatingsystem (To get the Operating system details)  
 Get-WMIObject -Class win32_logicaldisk (To get the disk details)  
 
+Powershell Remoting  
+PowerShell Remoting connects an administrator's local PowerShell session with a session running on a remote system.  
+The commands are entered in the local system, sent to a remote computer and executed locally.  
+The remote system then sends the results back to the local system. Windows Remote Management is used to run authentication and communication during this process.  
+To execute PowerShell commands or scripts on a remote computer, you need to create a session and it is just like an SSH session to an operating system.  
+Enable-PSRemoting -Force -SkipNetworkProfileCheck ()
+This command starts the WinRM service and creates a firewall rule to allow incoming connections. The -force option avoids PowerShell to prompt you for confirmation at each step.In a lab environment -SkipNetworkProfileCheck can be used to skip the network check.    
+Set-Item wsman:\localhost\client\trustedhosts -Value *  
+Configure TrustedHosts: On both computers, configure the TrustedHosts setting so they know each other.  
+Create a PowerShell Session and Execute Commands: Now when both computers have been configured, you can create a session using the following commands  
+Method 1:  
+Enter-PSSession -ComputerName system1 -Credential Administrator (Execute the following command and when prompted, provide the administrator's credentials)  
+Observe the [System1] being append in the PowerShell console. Now we have entered the Poershell console of remote system.  
+Type "exit" to come out of remote session.  
+Method 2: 
+Execute the below command and when prompted, provide the administrator's credentials  
+Invoke-Command -ComputerName system1 -Credential Administrator -ScriptBlock {Get-Process}
 
 
 
