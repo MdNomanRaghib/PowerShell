@@ -204,6 +204,22 @@ Remove-Item (It can delete many different types of items, including files, direc
 Remove-Item -Path C:\MyData\Test1.txt  
 Remove-Item -Path C:\MyData\* (Removes everything inside MyData directory,asks for prompt if its non-empty directory)  
 
+Module (set of related Windows PowerShell functionalities)  
+$ENV:PSModulePath environment variable contains a list of the directories in which Windows PowerShell modules are stored.  
+System location: %windir%\System32\WindowsPowerShell\v1.0\Modules  
+User location: %UserProfile%\Documents\WindowsPowerShell\Modules  
+Import-Module: Adds one or more modules to the current PowerShell session.  
+Get-Module: Retrieves information about the modules that has been loaded into the current session.  
+Remove-Module: Removes the specified module from the current session.  
+Import-Module C:\MyModule\Mymodule.psm1 (Module added to current session)   
+Get-Module (Retrieve details about the modules that has been loaded in the current PowerShell session)  
+Now, function in the module can be loaded directly.  
+Remove-Module (Removes module from current session)  
+
+
+
+
+
 
 
 
