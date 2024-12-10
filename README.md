@@ -192,6 +192,20 @@ New-Item (creates a new file or folder on your computer)
 New-Item -Path C:\ -Name MyData -Type Directory  
 New-Item -Path C:\ -Name MyData -Type Directory -Value "This is the content" (-Value can be used to add some data to your new file)  
 
+Copy-Item (cmdlet copies an item from one location to another)  
+Copy-Item -Path C:\OldLocation\Test1.txt -Destination C:\NewLocation  
+
+Move-Item (cmdlet moves an item, including its properties, contents, and child items, from one location to another location)  
+Move-Item will not overwrite any existing files in the target folder  
+Move-Item -Path C:\OldLocation\Test1.txt -Destination C:\NewLocation\Test2.txt (moves a file from one directory to another directory and renames it)  
+Move-Item -Path C:\MyData -Destination C:\Temp (move a directory to another directory)  
+
+Remove-Item (It can delete many different types of items, including files, directories, registry keys, variables, aliases, and functions)  
+Remove-Item -Path C:\MyData\Test1.txt  
+Remove-Item -Path C:\MyData\* (Removes everything inside MyData directory,asks for prompt if its non-empty directory)  
+
+
+
 
 
 
