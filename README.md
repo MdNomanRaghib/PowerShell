@@ -51,7 +51,7 @@ Remove-Item alias:\gpss
 Creating Variables:  
 $myname="Salman"  
 ${My Name is}="Salman"  
-Note: Letter, alphabet, symbols and special characters can be used while crceating a variable but enclose it inside {}.  
+Note: Letter, alphabet, symbols and special characters can be used while creating a variable but enclose it inside {}.  
 
 To get object type of a variable:  
 $myname.GetType()  
@@ -65,7 +65,7 @@ $commands=Get-Command
 To use a variable value in a string:  
 "Hello, $myname"  
 
-If $a=10 and B="20", then $a+$b=30 and $b+$a=2010 (Order of data type matters)  
+If $a=10 and $B="20", then $a+$b=30 and $b+$a=2010 (Order of data type matters)  
 variable casting : [int]$b="20"  
 
 Operator precedence in Poweshell(from left to right):  
@@ -128,7 +128,7 @@ Usage: Get-Service -Name DHCP
        Get-Service -Name "*net*"  
        Get-Service -DisplayName "*net*"  
 
-Where-Object: Used to limit or filter the object passed tothe pipeline.  
+Where-Object: Used to limit or filter the object passed to the pipeline.  
 Usage: Get-Service | Where-Object {$_.Status -eq "Running"}  
 Note: $_. is the current instance of the object being evaluated.  
 Use Cases:  
@@ -140,7 +140,7 @@ Get-Service | Where-Object {$_.Status -eq "Running" -and $_.Name -like "A*"} - a
 Select-Object - Filters specific properties of object based on the parameter specified:  
 Get-Service | Select-Object -Property Name,Status  
 Get-service | Select-Object -ExpandProperty -Name,Status (This removes the table headline of output.)  
-Get-Service| Select-Object -Head 5  
+Get-Service | Select-Object -First 5  
 Get-Service | Select-Object -Last 3  
 
 Out-File (This cmdlet sends output to a file)  
@@ -151,11 +151,11 @@ Get-Service >> C:\File.txt (This appends the data)
 Export-Csv (This cmdlet sends output to a file in CSV format)  
 Get-Service | Select-Object -Last 10 | Export-Csv -Path C:\File.csv  
 
-To convert the output to  comma separated values we can use the following command.  
-get-process |select -first 2|ConvertTo-Csv | Out-File -filepath D:\FA1_PowerShell\file4.csv  
+To convert the output to comma separated values we can use the following command.  
+get-process | Select -first 2 | ConvertTo-Csv | Out-File -filepath D:\FA1_PowerShell\file4.csv  
 
 To redirect the output to html file we can use the following command:  
-get-process |select -first 2|ConvertTo-Html | Out-File -filepath D:\FA1_PowerShell\file1.html  
+get-process | select -first 2 | ConvertTo-Html | Out-File -filepath D:\FA1_PowerShell\file1.html  
 
 To redirect the output to xml file we can use the following command:  
 get-process | Export-Clixml -path D:\FA1_PowerShell\file2.xml  
@@ -170,7 +170,7 @@ Get-Process | Sort-Object -Property CPU -Descending
 
 Measure-Object - This cmdlet performs calculations on property values of objects.  
 Get-Process | Measure-Object (Retrieves total no of processes)  
-Get-Process | Measure-Object -Property VM -Sum _average -Maximum -Minimum  
+Get-Process | Measure-Object -Property VM -Sum -average -Maximum -Minimum  
 Get-Process | Measure-Object -Property VM -Line -Word -Character  
 
 Get-Content (This cmdlet retrieves contents of file from a specified location)  
@@ -329,9 +329,7 @@ Finally
 {  
 Write-Host "FInally block reached"  
 }  
-
-PowerShell processes the operators in the following precedence order:  
-–Parentheses(), - negative number, *, /, %, “+ or –”  
+ 
 [math]::Round(1.23456,2)  
 
 
