@@ -139,7 +139,7 @@ Get-Service | Where-Object {$_.Status -eq "Running" -and $_.Name -like "A*"} - a
 
 Select-Object - Filters specific properties of object based on the parameter specified:  
 Get-Service | Select-Object -Property Name,Status  
-Get-service | Select-Object -ExpandProperty -Name,Status (This removes the table headline of output.)  
+Get-service | Select-Object -ExpandProperty Name,Status (This removes the table headline of output.)  
 Get-Service | Select-Object -First 5  
 Get-Service | Select-Object -Last 3  
 
@@ -150,15 +150,6 @@ Get-Service >> C:\File.txt (This appends the data)
 
 Export-Csv (This cmdlet sends output to a file in CSV format)  
 Get-Service | Select-Object -Last 10 | Export-Csv -Path C:\File.csv  
-
-To convert the output to comma separated values we can use the following command.  
-get-process | Select -first 2 | ConvertTo-Csv | Out-File -filepath D:\FA1_PowerShell\file4.csv  
-
-To redirect the output to html file we can use the following command:  
-get-process | select -first 2 | ConvertTo-Html | Out-File -filepath D:\FA1_PowerShell\file1.html  
-
-To redirect the output to xml file we can use the following command:  
-get-process | Export-Clixml -path D:\FA1_PowerShell\file2.xml  
 
 Get-Process (To retrieve all running processes in local or remote computer)  
 Get-Process -Name powershell (Show details of powershell process only)  
@@ -173,18 +164,27 @@ Get-Process | Measure-Object (Retrieves total no of processes)
 Get-Process | Measure-Object -Property VM -Sum -average -Maximum -Minimum  
 Get-Process | Measure-Object -Property VM -Line -Word -Character  
 
+To convert the output to comma separated values we can use the following command.  
+get-process | Select -first 2 | ConvertTo-Csv | Out-File -filepath D:\FA1_PowerShell\file4.csv  
+
+To redirect the output to html file we can use the following command:  
+get-process | select -first 2 | ConvertTo-Html | Out-File -filepath D:\FA1_PowerShell\file1.html  
+
+To redirect the output to xml file we can use the following command:  
+get-process | Export-Clixml -path D:\FA1_PowerShell\file2.xml  
+
 Get-Content (This cmdlet retrieves contents of file from a specified location)  
 Get-Content -Path C:\Test.txt  
 Import-Csv -Path C:\Text.csv  
 
-Get-EventLog -list (To view all available event logs)  
+Get-EventLog -List (To view all available event logs)  
 Get-EventLog -LogName Application (To display specific event log)  
 Get-EventLog -LogName Application -EntryType Error (displays the details of those events having errors in the application event log)  
 
 Format-Wide (To retrieve single-item data (such as a process name) and display that data in one or more columns)  
-Format-Wide only displays a single property as its -Property parameter only takes a single value.  
+Format-Wide only displays a single property as it is. -Property parameter only takes a single value.  
 Get-EventLog -LogName Application | Format-Wide -Property Source  
-Get_eventLog -LogName Application | Format-Wide -Property Source -Column 3  
+Get-EventLog -LogName Application | Format-Wide -Property Source -Column 3  
 The –Column parameter can be used to specify the number of columns in which the data has to be displayed.  
 
 Format-List (Displays an object in the form of a listing, with each property labeled and displayed on a separate line)  
@@ -221,10 +221,8 @@ $ENV:PSModulePath environment variable contains a list of the directories in whi
 System location: %windir%\System32\WindowsPowerShell\v1.0\Modules  
 User location: %UserProfile%\Documents\WindowsPowerShell\Modules  
 Import-Module: Adds one or more modules to the current PowerShell session.  
-Get-Module: Retrieves information about the modules that has been loaded into the current session.  
-Remove-Module: Removes the specified module from the current session.  
-Import-Module C:\MyModule\Mymodule.psm1 (Module added to current session)   
-Get-Module (Retrieve details about the modules that has been loaded in the current PowerShell session)  
+Import-Module C:\MyModule\Mymodule.psm1 (Module added to current session)     
+Get-Module: Retrieves information about the modules that has been loaded into the current session.    
 Now, function in the module can be loaded directly.  
 Remove-Module (Removes module from current session)  
 
@@ -264,7 +262,7 @@ PowerShell Remoting connects an administrator's local PowerShell session with a 
 The commands are entered in the local system, sent to a remote computer and executed locally.  
 The remote system then sends the results back to the local system. Windows Remote Management is used to run authentication and communication during this process.  
 To execute PowerShell commands or scripts on a remote computer, you need to create a session and it is just like an SSH session to an operating system.  
-Enable-PSRemoting -Force -SkipNetworkProfileCheck ()
+Enable-PSRemoting -Force -SkipNetworkProfileCheck()  
 This command starts the WinRM service and creates a firewall rule to allow incoming connections. The -force option avoids PowerShell to prompt you for confirmation at each step.In a lab environment -SkipNetworkProfileCheck can be used to skip the network check.    
 Set-Item wsman:\localhost\client\trustedhosts -Value *  
 Configure TrustedHosts: On both computers, configure the TrustedHosts setting so they know each other.  
@@ -285,7 +283,7 @@ Stop-Process -Name fakeprocess -ErrorVariable var ($var and $Error will store th
 
 ErrorAction  
 For a specific cmdlet, the user can specify the action to be taken if a non-terminating error occurs.  
-Continue: The default option.Errors will display and execution will continue.  
+Continue: The default option. Errors will display and execution will continue.  
 SilentlyContinue: Error messages are suppressed and execution continues.  
 Get-Process -Name Powershell,Ntpad -ErrorAction silentlycontinue  
 Stop: Forces execution to stop, making it like a terminating error.  
